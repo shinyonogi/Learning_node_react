@@ -1,8 +1,13 @@
 const express = require('express')
 const app = express()
 
-app.get("/api", (req, res) => {
-    res.json({"users": ["userOne", "userTwo", "userThree", "userFour"] })
+app.use(express.json())
+app.use(express.urlencoded())
+app.use(express.static('public'))
+
+app.post("/register", (req, res) => {
+    console.log(req.body)
+    res.send({"succed": "true"})
 })
 
 app.listen(5050, () => {
